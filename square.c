@@ -289,23 +289,38 @@ void printR(int x, int y, color C) {
                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
         }
     }
-    printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
+    //printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
 }
 
-// void printS(int x, int y, color C) {
-//     int i, j;
-//     for(i=0; i<5; i++){
-//         for(j=0; j<4; j++){
-//             if ((i==0 || i==2) && j!=3)
-//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
-//             else if ((i==1 || i==4) && j!=1 && j!=2)
-//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
-//             else if (i==3 && j!=1 && j!=3)
-//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
-//         }
-//     }
-//     printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
-// }
+void printS(int x, int y, color C) {
+    int i, j;
+    for(i=0; i<5; i++){
+        for(j=0; j<4; j++){
+            if (i==0 && j!=0)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==1 && j==0)
+                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==2 && j!=0 && j!=3)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==3 && j==3)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==4 && j!=3)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+        }
+    }
+}
+
+void printT(int x, int y, color C) {
+    int i, j;
+    for(i=0; i<5; i++){
+        for(j=0; j<3; j++){
+            if (i==0)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i!=0 && j!=0 && j!=2)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+        }
+    }
+}
 
 void printU(int x, int y, color C) {
 	int i, j;
@@ -322,7 +337,19 @@ void printU(int x, int y, color C) {
 	}	
 }
 
-
+void printV(int x, int y, color C) {
+    int i, j;
+    for(i=0; i<5; i++){
+        for(j=0; j<5; j++){
+            if ((i==0 || i==1) && (j==0 || j==4))
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if ((i==2 || i==3) && (j==1 || j==3))
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==4 && j==2)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+        }
+    }
+}
 
 
 
@@ -398,6 +425,9 @@ printN(680,100,C);
 printO(740,100,C);
 printP(790,100,C);
 printR(840,100,B);
+printS(890,100,B);
+printT(940,100,B);
+printV(990,100,B);
 
      munmap(fbp, screensize);
      close(fbfd);
