@@ -277,6 +277,36 @@ void printP(int x, int y, color C) {
 	printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
 }
 
+void printR(int x, int y, color C) {
+    int i, j;
+    for(i=0; i<5; i++){
+        for(j=0; j<4; j++){
+            if ((i==0 || i==2) && j!=3)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if ((i==1 || i==4) && j!=1 && j!=2)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+            else if (i==3 && j!=1 && j!=3)
+                printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+        }
+    }
+    printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
+}
+
+// void printS(int x, int y, color C) {
+//     int i, j;
+//     for(i=0; i<5; i++){
+//         for(j=0; j<4; j++){
+//             if ((i==0 || i==2) && j!=3)
+//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+//             else if ((i==1 || i==4) && j!=1 && j!=2)
+//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+//             else if (i==3 && j!=1 && j!=3)
+//                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
+//         }
+//     }
+//     printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
+// }
+
 void printU(int x, int y, color C) {
 	int i, j;
 	for(j=0;j<5;j++){
@@ -291,6 +321,10 @@ void printU(int x, int y, color C) {
 		}
 	}	
 }
+
+
+
+
 
  int main()
  {
@@ -334,28 +368,36 @@ void printU(int x, int y, color C) {
 	displayHeight = vinfo.yres;
      x = 40; y = 50;       // Where we are going to put the pixel
 
-     // Figure out where in memory to put the pixel
+     //define color
      color C;
      C.R = 255;
      C.G = 255;
      C.B = 10;
-	
-printA(50,50,C);	
-printB(100,50,C);
-printC(150,50,C);
-printD(200,50,C);
-printE(250,50,C);  
-printF(300,50,C);
-printG(350,50,C);
-printH(400,50,C);
-printI(450,50,C);
-printJ(470,50,C);
-printK(520,50,C);
-printL(570,50,C);
-printM(620,50,C);
-printN(680,50,C);
-printO(740,50,C);
-printP(790,50,C);
+
+     color B;
+     B.R = 66;
+     B.G = 134;
+     B.B = 244;
+
+     // Figure out where in memory to put the pixel
+	printSquare(SIZE, 3*SIZE+23, 7*SIZE+133, B);
+printA(50,100,C);	
+printB(100,100,C);
+printC(150,100,C);
+printD(200,100,C);
+printE(250,100,C);  
+printF(300,100,C);
+printG(350,100,C);
+printH(400,100,C);
+printI(450,100,C);
+printJ(470,100,C);
+printK(520,100,C);
+printL(570,100,C);
+printM(620,100,C);
+printN(680,100,C);
+printO(740,100,C);
+printP(790,100,C);
+printR(840,100,B);
 
      munmap(fbp, screensize);
      close(fbfd);
