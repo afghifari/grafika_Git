@@ -1,14 +1,6 @@
 #include "alphabets.c"
 #define distance 50
 
-void nameFahri (int x, int y, color c) {
-	printF(x, y, c);
-	printA(x+distance, y, c);
-	printH(x+2*distance, y, c);
-	printR(x+3*distance, y, c);
-	printI(x+4*distance, y, c);
-}
-
 void nameSeptialoka (int x, int y, color c) {
 	printS(x, y, c);
 	printE(x+distance, y, c);
@@ -27,4 +19,12 @@ void nameGumi (int x, int y, color c) {
 	printU(x+distance, y, c);
 	printM(x+2*distance, y, c);
 	printI(x+3*distance+10, y, c);
+}
+
+void nameFahri (int x, int y, color c) {
+	printF(x, y, c);
+	printA(x+distance, y, c);
+	printH(x+2*distance, y, c);
+	printR(x+3*distance, y, c);
+	printI(x+4*distance, y, c);
 }
