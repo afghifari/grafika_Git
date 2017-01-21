@@ -3,6 +3,7 @@
  int main()
  {
      int x = 0, y = 0;
+     int i;     
      long int location = 0;
 
      // Open the file for reading and writing
@@ -43,6 +44,11 @@
      x = 40; y = 50;       // Where we are going to put the pixel
 
      //define color
+	//black
+	color X;
+	X.R = 0;
+	X.G = 0;
+	X.B = 0;
 
     //yellow
     color C;
@@ -57,13 +63,18 @@
     B.B = 244;
 
      // Figure out where in memory to put the pixel
-     nameFahri(400, 100, C);
-     nameSeptialoka(400, 700, C);
-     nameGumi(400, 200, C);
-     nameJoshua(400, 300, C);
-     nameMalvin(400, 400, C);
-     nameRaihan(400, 500, C);
-     nameRaja(400, 600, C);
+     i = 500;
+     while (i > 0) {
+		 nameFahri(400, 100+i, C);
+		 /* nameSeptialoka(400, 700+i, C);
+		 nameGumi(400, 200+i, C);
+		 nameJoshua(400, 300+i, C);
+		 nameMalvin(400, 400+i, C);
+		 nameRaihan(400, 500+i, C);
+		 nameRaja(400, 600+i, C); */
+		 i -= 1;
+		 printBackground(X);
+	 }
 
 // 	printSquare(SIZE, 3*SIZE+23, 7*SIZE+133, B);
 // printA(50,100,C);	
