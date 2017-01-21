@@ -28,3 +28,37 @@ void nameFahri (int x, int y, color c) {
 	printR(x+3*distance, y, c);
 	printI(x+4*distance, y, c);
 }
+
+void nameMalvin (int x, int y, color c) {
+	printM(x, y, c);
+	printA(x+distance+20, y, c);
+	printL(x+2*distance+20, y, c);
+	printV(x+3*distance+20, y, c);
+	printI(x+4*distance+40, y, c);
+	printN(x+4*distance+60, y, c);
+}
+
+void nameJoshua (int x, int y, color c) {
+	printJ(x, y, c);
+	printO(x+distance, y, c);
+	printS(x+2*distance, y, c);
+	printH(x+3*distance, y, c);
+	printU(x+4*distance, y, c);
+	printA(x+5*distance, y, c);
+}
+
+void nameRaihan (int x, int y, color c) {
+	printR(x, y, c);
+	printA(x+distance, y, c);
+	printI(x+2*distance, y, c);
+	printH(x+2*distance+20, y, c);
+	printA(x+3*distance+20, y, c);
+	printN(x+4*distance+20, y, c);
+}
+
+void nameRaja (int x, int y, color c) {
+	printR(x, y, c);
+	printA(x+distance, y, c);
+	printJ(x+2*distance, y, c);
+	printA(x+3*distance, y, c);
+}

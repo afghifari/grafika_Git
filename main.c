@@ -57,9 +57,13 @@
     B.B = 244;
 
      // Figure out where in memory to put the pixel
-     nameFahri(400, 500, C);
-     nameSeptialoka(300, 230, B);
-     nameGumi(600, 412, C);
+     nameFahri(400, 100, C);
+     nameSeptialoka(400, 700, C);
+     nameGumi(400, 200, C);
+     nameJoshua(400, 300, C);
+     nameMalvin(400, 400, C);
+     nameRaihan(400, 500, C);
+     nameRaja(400, 600, C);
 
 // 	printSquare(SIZE, 3*SIZE+23, 7*SIZE+133, B);
 // printA(50,100,C);	
