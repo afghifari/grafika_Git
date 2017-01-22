@@ -272,3 +272,20 @@ void printV(int x, int y, color C) {
         }
     }
 }
+
+void print7(int x, int y, color C) {
+	int i, j;
+	for(i=0; i<4; i++){
+		for(j=0; j<5; j++) {
+			if (j==0) {
+				printSquare(SIZE, i*SIZE+x, j*SIZE+y, C);
+			} else if (j==1) {
+				printSquare(SIZE, 3*SIZE+x, j*SIZE+y, C);
+			} else if (j==2) {
+				printSquare(SIZE, 2*SIZE+x, j*SIZE+y, C);
+			} else {
+				printSquare(SIZE, 1*SIZE+x, j*SIZE+y, C);
+			}
+		}
+	}
+}

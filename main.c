@@ -65,13 +65,14 @@
      // Figure out where in memory to put the pixel
      i = 750;
      while (i > -750) {
-		 nameFahri(400, i, C);
-		 nameGumi(400, 100+i, C);
-		 nameJoshua(400, 200+i, C);
-		 nameMalvin(400, 300+i, C);
-		 nameRaihan(400, 400+i, C);
-		 nameRaja(400, 500+i, C);
-		 nameSeptialoka(400, 600+i, C);
+		kelompok7(400, i, C);
+		 nameFahri(400, 100+i, C);
+		 nameGumi(400, 200+i, C);
+		 nameJoshua(400, 300+i, C);
+		 nameMalvin(400, 400+i, C);
+		 nameRaihan(400, 500+i, C);
+		 nameRaja(400, 600+i, C);
+		 nameSeptialoka(400, 700+i, C);
 		 i -= 10;
 		printBackground(X);
 	 }

@@ -62,3 +62,15 @@ void nameRaja (int x, int y, color c) {
 	printJ(x+2*distance, y, c);
 	printA(x+3*distance, y, c);
 }
+
+void kelompok7 (int x, int y, color c) {
+	printK(x, y, c);
+	printE(x+distance, y, c);
+	printL(x+2*distance, y, c);
+	printO(x+3*distance, y, c);
+	printM(x+4*distance, y, c);
+	printP(x+5*distance+20, y, c);
+	printO(x+6*distance+20, y, c);
+	printK(x+7*distance+20, y, c);
+	print7(x+9*distance, y, c);
+}
