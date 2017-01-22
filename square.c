@@ -32,25 +32,31 @@ C       : color struct (Red, Green, Blue)
 void printSquare (int edge, int loc_x, int loc_y, color C) {
     long int location;
     int i,j;
-    for (i = loc_x; i < (loc_x+edge); i++) {
-        for (j = loc_y; j < (loc_y+edge); j++) {
-            location = (i+vinfo.xoffset) * (vinfo.bits_per_pixel/8) + (j+vinfo.yoffset) * finfo.line_length;
-
-            if (vinfo.bits_per_pixel == 32) {
-                *(fbp + location) = C.B;            //Blue
-                *(fbp + location + 1) = C.G;        //Green
-                *(fbp + location + 2) = C.R;        //Red
-                *(fbp + location + 3) = 0;          //Transparancy
-            } else  { //assume 16bpp
-                int r = C.R;     //Red
-                int g = C.G;     //Green
-                int b = C.B;     //Blue
-                
-                unsigned short int t = r<<11 | g << 5 | b;
-                *((unsigned short int*)(fbp + location)) = t;
-            }
-        }
-    }
+    if (((loc_x)>=0) && ((loc_x + edge)<vinfo.xres) && ((loc_y)>=0) && ((loc_y + edge)<vinfo.yres)) {
+		for (i = loc_x; i < (loc_x+edge); i++) {
+			for (j = loc_y; j < (loc_y+edge); j++) {
+				location = (i+vinfo.xoffset) * (vinfo.bits_per_pixel/8) + (j+vinfo.yoffset) * finfo.line_length;
+				
+				if (fbp + location) { //check for segmentation fault
+					if (vinfo.bits_per_pixel == 32) {
+						*(fbp + location) = C.B;            //Blue
+						*(fbp + location + 1) = C.G;        //Green
+						*(fbp + location + 2) = C.R;        //Red
+						*(fbp + location + 3) = 0;          //Transparancy
+					} else  { //assume 16bpp
+						int r = C.R;     //Red
+						int g = C.G;     //Green
+						int b = C.B;     //Blue
+						
+						unsigned short int t = r<<11 | g << 5 | b;
+						*((unsigned short int*)(fbp + location)) = t;
+					}
+				} else {
+					return;
+				}
+			}
+		}
+	}
 }
 
 void printBackground(color C) {
@@ -62,7 +68,6 @@ void printBackground(color C) {
     for (i = 0; i < width; i++) {
         for (j = 0; j < height; j++) {
             location = (i+vinfo.xoffset) * (vinfo.bits_per_pixel/8) + (j+vinfo.yoffset) * finfo.line_length;
-
             if (vinfo.bits_per_pixel == 32) {
                 *(fbp + location) = C.B;         //Blue
                 *(fbp + location + 1) = C.G;     //Green
