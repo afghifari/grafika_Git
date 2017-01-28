@@ -1,4 +1,4 @@
-#include "line.c"
+#include "cannon.c"
 
  int main()
  {
@@ -91,7 +91,7 @@
 	C.B = 10;
 	int W;
 
-	Point P1, P2;
+/*	Point P1, P2;
 	printf("Input first point x & y position\n");
 	scanf("%d %d", &P1.x, &P1.y);
 
@@ -100,8 +100,10 @@
 
 	printf("Input line weight\n");
 	scanf("%d", &W);
-
-	drawBresenhamLine(P1, P2, C, W);
+*/
+	buildCannon(500, 600, C);
+	sleep(1);
+	shootCannon(C);
 
 	//printBackground(X);
 
