@@ -42,16 +42,19 @@
 	displayWidth = vinfo.xres;
 	displayHeight = vinfo.yres;
 
-/** Print Name
 
-     x = 40; y = 50;       // Where we are going to put the pixel
-
-     //define color
 	//black
 	color X;
 	X.R = 0;
 	X.G = 0;
 	X.B = 0;
+
+/** Print Name
+
+     x = 40; y = 50;       // Where we are going to put the pixel
+
+     //define color
+	
 
     //yellow
     color C;
@@ -99,6 +102,8 @@
 	scanf("%d", &W);
 
 	drawBresenhamLine(P1, P2, C, W);
+
+	//printBackground(X);
 
      munmap(fbp, screensize);
      close(fbfd);
