@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "square.c"
 
 typedef struct {
 	int x;
@@ -18,7 +19,7 @@ void swapPoint (Point *P1, Point *P2) {
 	swap(&P1->y, &P2->y);
 }
 
-void plotSlopPositiveLine (Point P1, Point P2) {
+void plotSlopPositiveLine (Point P1, Point P2, color C, int W) {
 	int dX, dY, p;
 	int i, j, x, y;
 
@@ -32,6 +33,7 @@ void plotSlopPositiveLine (Point P1, Point P2) {
 		printf("Based on X\n");
 		for (x=P1.x; x<=P2.x; x++) {
 			printf("%d %d\n", x, j);
+			printSquare(W, x, j, C);
 			if (p >= 0) {
 				p += 2* (dY - dX);
 				i++;
@@ -48,6 +50,7 @@ void plotSlopPositiveLine (Point P1, Point P2) {
 		printf("Based on Y\n");
 		for (y=P1.y; y<=P2.y; y++) {
 			printf("%d %d\n", i, y);
+			printSquare(W, i, y, C);
 			if (p >= 0) {
 				p += 2* (dX - dY);
 				i++;
@@ -61,7 +64,7 @@ void plotSlopPositiveLine (Point P1, Point P2) {
 	}
 }
 
-void plotSlopNegativeLine (Point P1, Point P2) {
+void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 	int dX, dY, p;
 	int i, j, x, y;
 
@@ -75,6 +78,7 @@ void plotSlopNegativeLine (Point P1, Point P2) {
 		printf("Based on X\n");
 		for (x=P1.x; x<=P2.x; x++) {
 			printf("%d %d\n", x, j);
+			printSquare(W, x, j, C);
 			if (p >= 0) {
 				p += 2* (dY - dX);
 				i++;
@@ -91,6 +95,7 @@ void plotSlopNegativeLine (Point P1, Point P2) {
 		printf("Based on Y\n");
 		for (y=P2.y; y<=P1.y; y++) {
 			printf("%d %d\n", i, y);
+			printSquare(W, i, y, C);
 			if (p >= 0) {
 				p += 2* (dX - dY);
 				i++;
@@ -104,14 +109,15 @@ void plotSlopNegativeLine (Point P1, Point P2) {
 	}
 }
 
-void plotVerticalLine (Point P1, Point P2) {
+void plotVerticalLine (Point P1, Point P2, color C, int W) {
 	int j;
 	for(j = P1.y ; j <= P2.y; j++){
         printf("%d %d\n", P1.x , j);
+	printSquare(W, P1.x, j, C);
 	}
 }
 
-void drawBresenhamLine (Point P1, Point P2) {
+void drawBresenhamLine (Point P1, Point P2, color C, int W) {
 	if (P1.x > P2.x) {
 		swapPoint(&P1,&P2);
 	}
@@ -119,24 +125,15 @@ void drawBresenhamLine (Point P1, Point P2) {
 	printf("%d %d\n", P2.x, P2.y);
 	if ((P2.x >= P1.x && P1.y > P2.y)) {
 		printf("N Slope\n");
-		plotSlopNegativeLine(P1,P2);
+		plotSlopNegativeLine(P1,P2,C,W);
 	}
 	else if (P1.x == P2.x) {
-		plotVerticalLine(P1,P2);;
+		plotVerticalLine(P1,P2,C,W);
 	}
 	else {
 		printf("P Slope\n");
-		plotSlopPositiveLine(P1,P2);
+		plotSlopPositiveLine(P1,P2,C,W);
 	}
 }
 
-int main() {
-	Point P1, P2;
-	printf("Input first point x & y position\n");
-	scanf("%d %d", &P1.x, &P1.y);
 
-	printf("Input second point x & y position\n");
-	scanf("%d %d", &P2.x, &P2.y);
-
-	drawBresenhamLine(P1, P2);
-}

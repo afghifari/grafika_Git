@@ -1,4 +1,4 @@
-#include "name.c"
+#include "line.c"
 
  int main()
  {
@@ -41,6 +41,9 @@
      printf("The framebuffer device was mapped to memory successfully.\n");
 	displayWidth = vinfo.xres;
 	displayHeight = vinfo.yres;
+
+/** Print Name
+
      x = 40; y = 50;       // Where we are going to put the pixel
 
      //define color
@@ -76,28 +79,26 @@
 		 i -= 10;
 		printBackground(X);
 	 }
+*/
 
-// 	printSquare(SIZE, 3*SIZE+23, 7*SIZE+133, B);
-// printA(50,100,C);	
-// printB(100,100,C);
-// printC(150,100,C);
-// printD(200,100,C);
-// printE(250,100,C);  
-// printF(300,100,C);
-// printG(350,100,C);
-// printH(400,100,C);
-// printI(450,100,C);
-// printJ(470,100,C);
-// printK(520,100,C);
-// printL(570,100,C);
-// printM(620,100,C);
-// printN(680,100,C);
-// printO(740,100,C);
-// printP(790,100,C);
-// printR(840,100,B);
-// printS(890,100,B);
-// printT(940,100,B);
-// printV(990,100,B);
+
+	color C;
+	C.R = 255;
+	C.G = 255;
+	C.B = 10;
+	int W;
+
+	Point P1, P2;
+	printf("Input first point x & y position\n");
+	scanf("%d %d", &P1.x, &P1.y);
+
+	printf("Input second point x & y position\n");
+	scanf("%d %d", &P2.x, &P2.y);
+
+	printf("Input line weight\n");
+	scanf("%d", &W);
+
+	drawBresenhamLine(P1, P2, C, W);
 
      munmap(fbp, screensize);
      close(fbfd);
