@@ -100,13 +100,25 @@
 
 	printf("Input line weight\n");
 	scanf("%d", &W);
-*/
+
 	buildCannon(500, 600, C);
 	sleep(1);
 	shootCannon(C);
 
 	//printBackground(X);
-
+*/
+	int n;
+	Point P[10];
+	printf("Input number of point(s)\n");
+	scanf("%d", &n);
+	for (int i = 0;i < n;i++) {
+		printf("Input point-%d x & y position\n", i+1);
+		scanf("%d %d", &P[i].x, &P[i].y);
+	}
+	printf("Input line weight\n");
+	scanf("%d", &W);
+	drawPolygon(n, P, C, W);
+	
      munmap(fbp, screensize);
      close(fbfd);
      return 0;

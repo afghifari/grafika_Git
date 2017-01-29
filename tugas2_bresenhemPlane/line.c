@@ -148,4 +148,15 @@ void drawBresenhamLine (Point P1, Point P2, color C, int W) {
 	}
 }
 
+void drawPolyline (int n, Point *P, color C, int W) {
+	for (int i = 0;i < n-1;i++) {
+		drawBresenhamLine(P[i], P[i+1], C, W);
+	}
+}
 
+void drawPolygon (int n, Point *P, color C, int W) {
+	drawBresenhamLine(P[n-1], P[0], C, W);
+	drawPolyline(n, P, C, W);
+	// fill unknown generated gap
+	drawBresenhamLine(P[n-1], P[0], C, W);
+}
