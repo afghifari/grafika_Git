@@ -7,6 +7,12 @@ typedef struct {
 	int y;
 } Point;
 
+/*Gambar explosion masih jelek*/
+Point explosionPoint[11] = {
+	{4,9}, {7,12}, {11, 10}, {7, 14}, {10, 16},
+	{6, 16}, {2, 18}, {5, 15}, {1, 14}, {4, 12}
+};
+
 void swap (int *a, int *b) {
 	int temp;
 
@@ -159,4 +165,33 @@ void drawPolygon (int n, Point *P, color C, int W) {
 	drawPolyline(n, P, C, W);
 	// fill unknown generated gap
 	drawBresenhamLine(P[n-1], P[0], C, W);
+}
+
+/*
+initialPoint : explosion location in the screen
+scaleFactor : size of the explosion
+*P isi dengan array explosionPoint
+*/
+void drawExplosion (Point initialPoint, int n, Point *P, int scaleFactor) {
+	/*Orange color*/
+	color C;
+	C.R = 218;
+	C.G = 114;
+	C.B = 53;
+
+	int i;
+
+	if (scaleFactor >1) {
+		for (i = 0; i<n; i++) {
+			P[i].x *= scaleFactor;
+			P[i].y *= scaleFactor;
+		}
+	}
+
+	for (i = 0; i<n; i++) {
+		P[i].x += initialPoint.x;
+		P[i].y +=initialPoint.y;
+	}
+
+	drawPolygon(n, P, C, 2);
 }
