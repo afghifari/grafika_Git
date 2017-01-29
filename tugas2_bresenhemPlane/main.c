@@ -1,4 +1,20 @@
 #include "cannon.c"
+#include <termios.h>
+#include <unistd.h>
+
+//read keypress
+int getch(void) {
+	struct termios oldattr, newattr;
+	int ch;
+	tcgetattr( STDIN_FILENO, &oldattr );
+	newattr = oldattr;
+	newattr.c_lflag &= ~( ICANON | ECHO );
+	tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+	ch = getchar();
+	tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+	return ch;
+}
+
 
  int main()
  {
@@ -110,15 +126,27 @@
 	int n;
 	Point P[10];
 	printf("Input number of point(s)\n");
-	scanf("%d", &n);
+	//scanf("%d", &n);
+	n = 2;
 	for (int i = 0;i < n;i++) {
 		printf("Input point-%d x & y position\n", i+1);
-		scanf("%d %d", &P[i].x, &P[i].y);
+		//scanf("%d %d", &P[i].x, &P[i].y);
+		P[0].x = 1;
+		P[0].y = 2;
+		P[1].x = 10;
+		P[1].y = 20;
 	}
 	printf("Input line weight\n");
-	scanf("%d", &W);
-	drawPolygon(n, P, C, W);
+	//scanf("%d", &W);
+	W= 1;
 	
+	//read enter buat nembak
+	int cmd=' ';
+	printf("Tekan enter untuk menembak!");
+	cmd = getch();
+	if (cmd == 10) {
+		if (cmd==10) drawPolygon(n, P, C, W);
+	}
      munmap(fbp, screensize);
      close(fbfd);
      return 0;
