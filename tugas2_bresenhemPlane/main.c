@@ -1,6 +1,8 @@
 #include "cannon.c"
 #include <termios.h>
 #include <unistd.h>
+#include <pthread.h>
+#include <stdio.h>
 
 //read keypress
 int getch(void) {
@@ -15,6 +17,19 @@ int getch(void) {
 	return ch;
 }
 
+
+/* this function is run by the second thread */
+void *inc_x(void *x_void_ptr) {    
+	int cmd = ' ';
+	while (1) {
+		cmd = getch();
+		if (cmd == 10) {
+		   //peluru ditembak
+	   }
+	}
+	/* the function must return something - NULL will do */
+	return NULL;
+}
 
  int main()
  {
@@ -140,14 +155,21 @@ int getch(void) {
 	//scanf("%d", &W);
 	W= 1;
 	
-	//read enter buat nembak
-	int cmd=' ';
-	printf("Tekan enter untuk menembak!");
-	cmd = getch();
-	if (cmd == 10) {
-		if (cmd==10) drawPolygon(n, P, C, W);
+	/* this variable is our reference to the second thread */
+	pthread_t inc_x_thread;
+
+	/* create a second thread which executes inc_x(&x) */
+	if(pthread_create(&inc_x_thread, NULL, inc_x, &x)) {
+		fprintf(stderr, "Error creating thread\n");
+		return 1;
+	} else {
+		//masuk ke second thread
+		
+		//pesawat terbang disini
+		
+		drawPolygon(n, P, C, W);
+		munmap(fbp, screensize);
+		close(fbfd);
+		return 0;
 	}
-     munmap(fbp, screensize);
-     close(fbfd);
-     return 0;
- }
+}
