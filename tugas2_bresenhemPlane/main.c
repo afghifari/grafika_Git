@@ -80,13 +80,6 @@ void *inc_x(void *x_void_ptr) {
 	X.G = 0;
 	X.B = 0;
 
-/** Print Name
-
-     x = 40; y = 50;       // Where we are going to put the pixel
-
-     //define color
-	
-
     //yellow
     color C;
     C.R = 255;
@@ -99,21 +92,6 @@ void *inc_x(void *x_void_ptr) {
     B.G = 134;
     B.B = 244;
 
-     // Figure out where in memory to put the pixel
-     i = 750;
-     while (i > -750) {
-		kelompok7(400, i, C);
-		 nameFahri(400, 100+i, C);
-		 nameGumi(400, 200+i, C);
-		 nameJoshua(400, 300+i, C);
-		 nameMalvin(400, 400+i, C);
-		 nameRaihan(400, 500+i, C);
-		 nameRaja(400, 600+i, C);
-		 nameSeptialoka(400, 700+i, C);
-		 i -= 10;
-		printBackground(X);
-	 }
-*/
 
 
 	color C;
@@ -143,7 +121,7 @@ void *inc_x(void *x_void_ptr) {
 	printf("Input number of point(s)\n");
 	//scanf("%d", &n);
 	n = 2;
-	for (int i = 0;i < n;i++) {
+	for (i = 0;i < n;i++) {
 		printf("Input point-%d x & y position\n", i+1);
 		//scanf("%d %d", &P[i].x, &P[i].y);
 		P[0].x = 1;
