@@ -1,7 +1,7 @@
-all: movingtexts
+all: myPlane
 
-movingtexts: main.c
-	gcc -o movingtext main.c -lpthread
+myPlane: main.c
+	gcc -o myPlane main.c -lpthread
 
 clean:
-	$(RM) movingtexts
+	$(RM) myPlane

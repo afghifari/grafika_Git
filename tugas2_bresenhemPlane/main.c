@@ -1,4 +1,4 @@
-#include "cannon.c"
+#include "plane.c"
 #include <termios.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -93,61 +93,56 @@ void *inc_x(void *x_void_ptr) {
     B.B = 244;
 
 
-
-	color C;
-	C.R = 255;
-	C.G = 255;
-	C.B = 10;
 	int W;
 
-/*	Point P1, P2;
-	printf("Input first point x & y position\n");
-	scanf("%d %d", &P1.x, &P1.y);
+	// Point P1, P2;
+	// printf("Input first point x & y position\n");
+	// scanf("%d %d", &P1.x, &P1.y);
 
-	printf("Input second point x & y position\n");
-	scanf("%d %d", &P2.x, &P2.y);
+	// printf("Input second point x & y position\n");
+	// scanf("%d %d", &P2.x, &P2.y);
 
-	printf("Input line weight\n");
-	scanf("%d", &W);
+	// printf("Input line weight\n");
+	// scanf("%d", &W);
 
-	buildCannon(500, 600, C);
-	sleep(1);
-	shootCannon(C);
-
+	// buildCannon(500, 600, C);
+	// sleep(1);
+	// shootCannon(C);
+	buildPlane(345, 512, B);
 	//printBackground(X);
-*/
-	int n;
-	Point P[10];
-	printf("Input number of point(s)\n");
-	//scanf("%d", &n);
-	n = 2;
-	for (i = 0;i < n;i++) {
-		printf("Input point-%d x & y position\n", i+1);
-		//scanf("%d %d", &P[i].x, &P[i].y);
-		P[0].x = 1;
-		P[0].y = 2;
-		P[1].x = 10;
-		P[1].y = 20;
-	}
-	printf("Input line weight\n");
-	//scanf("%d", &W);
-	W= 1;
-	
-	/* this variable is our reference to the second thread */
-	pthread_t inc_x_thread;
 
-	/* create a second thread which executes inc_x(&x) */
-	if(pthread_create(&inc_x_thread, NULL, inc_x, &x)) {
-		fprintf(stderr, "Error creating thread\n");
-		return 1;
-	} else {
-		//masuk ke second thread
+	// int n;
+	// Point P[10];
+	// printf("Input number of point(s)\n");
+	// //scanf("%d", &n);
+	// n = 2;
+	// for (i = 0;i < n;i++) {
+	// 	printf("Input point-%d x & y position\n", i+1);
+	// 	//scanf("%d %d", &P[i].x, &P[i].y);
+	// 	P[0].x = 1;
+	// 	P[0].y = 2;
+	// 	P[1].x = 10;
+	// 	P[1].y = 20;
+	// }
+	// printf("Input line weight\n");
+	// //scanf("%d", &W);
+	// W= 1;
+	
+	//  //this variable is our reference to the second thread 
+	// pthread_t inc_x_thread;
+
+	//  //create a second thread which executes inc_x(&x) 
+	// if(pthread_create(&inc_x_thread, NULL, inc_x, &x)) {
+	// 	fprintf(stderr, "Error creating thread\n");
+	// 	return 1;
+	// } else {
+	// 	//masuk ke second thread
 		
-		//pesawat terbang disini
+	// 	//pesawat terbang disini
 		
-		drawPolygon(n, P, C, W);
-		munmap(fbp, screensize);
-		close(fbfd);
-		return 0;
-	}
+	// 	drawPolygon(n, P, C, W);
+	// 	munmap(fbp, screensize);
+	// 	close(fbfd);
+	// 	return 0;
+	// }
 }
