@@ -43,7 +43,7 @@ void *inc_x(void *x_void_ptr) {
          perror("Error: cannot open framebuffer device");
          exit(1);
      }
-     printf("The framebuffer device was opened successfully.\n");
+   //  printf("The framebuffer device was opened successfully.\n");
 
      // Get fixed screen information
      if (ioctl(fbfd, FBIOGET_FSCREENINFO, &finfo) == -1) {
@@ -95,7 +95,25 @@ void *inc_x(void *x_void_ptr) {
 
 	int W;
 
-	// Point P1, P2;
+	Point P1[4];//, P2, P3; 
+	P1[0].x = 765;
+	P1[0].y = 243;
+
+	P1[1].x = 800;  
+	P1[1].y = 243;
+
+	P1[2].x = 234;    
+	P1[2].y = 123; 
+ 
+	// P1[3].x = 765;   
+	// P1[3].y = 243;
+    // printBackground(X);  
+ 
+    buildPlane(850, 345, C); 
+       
+	//drawBresenhamLine (P1, P2, C, 3);
+	//drawPolyline (2, &P1, C, 1); 
+	//drawPolygon (3, &P1, C, 1);
 	// printf("Input first point x & y position\n");
 	// scanf("%d %d", &P1.x, &P1.y);
 
@@ -107,8 +125,8 @@ void *inc_x(void *x_void_ptr) {
 
 	// buildCannon(500, 600, C);
 	// sleep(1);
-	// shootCannon(C);
-	buildPlane(345, 512, B);
+	// shootCannon(C); 
+	// buildPlane(345, 512, B);
 	//printBackground(X);
 
 	// int n;
