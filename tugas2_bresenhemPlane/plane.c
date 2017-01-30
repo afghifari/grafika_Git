@@ -7,23 +7,23 @@ int planeY;
 
 
 void buildPlane(int x, int y, color c){
+	//making list of points
+	Point PointList[7];
+
 	//assign global variables with the assigned parameters
 	planeX = x;
 	planeY = y;
-	
-	//making list of points
-	Point PointList[7];
 
 	PointList[0].x = planeX;
 	PointList[0].y = planeY;
 	
-	PointList[1].x = planeX + 60;
-	planeX += 60;
-	PointList[1].y = planeY - 35;
-	planeY -= 35;
+	PointList[1].x = planeX + 70;
+	planeX += 70;
+	PointList[1].y = planeY - 45;
+	planeY -= 45;
 	
-	PointList[2].x = planeX + 200;
-	planeX += 200;
+	PointList[2].x = planeX + 190;
+	planeX += 190;
 	PointList[2].y = planeY;
 	
 	PointList[3].x = planeX + 60;
@@ -35,14 +35,58 @@ void buildPlane(int x, int y, color c){
 	planeX += 20;
 	PointList[4].y = planeY;
 	
-	PointList[5].x = planeX + 1;
-	planeX += 1;
-	PointList[5].y = planeY;
+	PointList[5].x = planeX;
+	PointList[5].y = planeY + 80;
+	planeY += 80;
 	
-	PointList[6].x = planeX - 25;
-	planeX -= 8;
-	PointList[6].y = planeY + 70;
-	planeY += 70;
+	drawPolygon(6, &PointList, c, 2);
+
+	planeX = x + 100;
+	planeY = y - 25;
+
+	PointList[0].x = planeX;
+	PointList[0].y = planeY;
+
+	PointList[1].x = planeX + 100;
+	planeX += 100;
+	PointList[1].y = planeY;
+
+	PointList[2].x = planeX + 100;
+	planeX += 100;
+	PointList[2].y = planeY + 45;
+	planeY += 45;
+
+	PointList[3].x = planeX - 50;
+	planeX -= 50;
+	PointList[3].y = planeY;
+
+	drawPolygon(4, &PointList, c, 2);
+
+	planeX = x + 100;
+	planeY = y - 45;
+
+	PointList[0].x = planeX;
+	PointList[0].y = planeY;
+
+	PointList[1].x = planeX + 100;
+	planeX += 100;
+	PointList[1].y = planeY;
+
+	PointList[2].x = planeX + 100;
+	planeX += 100;
+	PointList[2].y = planeY - 45;
+	planeY -= 45;
+
+	PointList[3].x = planeX - 50;
+	planeX -= 50;
+	PointList[3].y = planeY;
+
+	drawPolygon(4, &PointList, c, 2);
+
+	// PointList[6].x = planeX - 25;
+	// planeX -= 8;
+	// PointList[6].y = planeY + 70;
+	// planeY += 70;
 	
 	// PointList[7].x = planeX + 10;
 	// PointList[7].y = planeY - 4;
@@ -69,7 +113,7 @@ void buildPlane(int x, int y, color c){
 	// PointList[14].y = planeY + 1;
 	
 	//building the polygon
-	drawPolygon(7, &PointList, c, 2);
+	
 }
 
 

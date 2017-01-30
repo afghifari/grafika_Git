@@ -34,7 +34,8 @@ void *inc_x(void *x_void_ptr) {
  int main()
  {
      int x = 0, y = 0;
-     int i;     
+     int i, j;
+     int sign;   
      long int location = 0;
 
      // Open the file for reading and writing
@@ -94,26 +95,51 @@ void *inc_x(void *x_void_ptr) {
 
 
 	int W;
+	/*
+	/////////////////////// ADA BUG KALO BIKIN TITIK BEGINI
+	///////////////// START OF BUG ///
+	Point P1[4];
+	P1[0].x = 365;       
+	P1[0].y = 243; 
 
-	Point P1[4];//, P2, P3; 
-	P1[0].x = 765;
-	P1[0].y = 243;
+	P1[1].x = 400; // titik x ke kanan dg y constant 
+	P1[1].y = 243;         
 
-	P1[1].x = 800;  
-	P1[1].y = 243;
+	P1[2].x = 332; // titik x ke kanan dan y 
+	P1[2].y = 400; 
+ 	
+ 	drawPolygon (3, &P1, C, 1);
+ 	//// Kalo di logika hasilnya nggak akan begini,, tapi ini jadi begini
+ 	//// dan alhasil ini berdampak pada pesawat yang aku bikin
+ 	//////////////////////////////// END OF BUG
+*/ 
 
-	P1[2].x = 234;    
-	P1[2].y = 123; 
- 
+	j = 240;
+	sign = 0;
+  	for (i = 900 ; i > 20 ; i-=15){
+ 	    buildPlane(i, j, C); 
+ 	    if (j <= 100)
+ 	    	sign = 1;
+ 	    else if (j >= 340)
+ 	    	sign = 0;
+
+ 	    if (sign == 0)
+ 	    	j -= 20;
+ 	    else
+ 	    	j += 25;
+ 	    printBackground(X);  
+  	}
 	// P1[3].x = 765;   
 	// P1[3].y = 243;
-    // printBackground(X);  
+    
  
-    buildPlane(850, 345, C); 
+
        
 	//drawBresenhamLine (P1, P2, C, 3);
 	//drawPolyline (2, &P1, C, 1); 
-	//drawPolygon (3, &P1, C, 1);
+	
+
+	
 	// printf("Input first point x & y position\n");
 	// scanf("%d %d", &P1.x, &P1.y);
 

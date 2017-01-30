@@ -36,7 +36,7 @@ void plotSlopPositiveLine (Point P1, Point P2, color C, int W) {
 	
 	if (dX >= dY) {
 		p = 2*dY - dX;
-		printf("Based on +X\n");
+		// printf("Based on +X\n");
 		for (x=P1.x; x<=P2.x; x++) {
 			// printf("%d %d\n", x, j);
 			if (W<4) printSquare(W, x, j, C);
@@ -56,7 +56,7 @@ void plotSlopPositiveLine (Point P1, Point P2, color C, int W) {
 	}
 	else {
 		p = 2*dX - dY;
-		printf("Based on +Y\n");
+		// printf("Based on +Y\n");
 		for (y=P1.y; y<=P2.y; y++) {
 			// printf("%d %d\n", i, y);
 			if (W<4) printSquare(W, i, y, C);
@@ -87,7 +87,7 @@ void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 
 	if (dX >= dY) {
 		p = 2*dY - dX;		
-		printf("Based on -X\n");
+		// printf("Based on -X\n");
 		for (x=P1.x; x<=P2.x; x++) {
 			// printf("%d %d\n", x, j);
 			if (W<4) printSquare(W, x, j, C);
@@ -107,7 +107,7 @@ void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 	}
 	else {
 		p = 2*dX - dY;
-		printf("Based on -Y\n");
+		// printf("Based on -Y\n");
 		for (y=P2.y; y<=P1.y; y++) {
 			// printf("%d %d\n", i, y);
 			if (W<4) printSquare(W, i, y, C);
