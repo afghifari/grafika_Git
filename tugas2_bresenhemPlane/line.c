@@ -107,6 +107,8 @@ void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 	}
 	else {
 		p = 2*dX - dY;
+		i = P2.x;
+		j = P2.y;
 		// printf("Based on -Y\n");
 		for (y=P2.y; y<=P1.y; y++) {
 			// printf("%d %d\n", i, y);
@@ -116,7 +118,7 @@ void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 			}
 			if (p >= 0) {
 				p += 2* (dX - dY);
-				i++;
+				i--;
 				j++;
 			}
 			else {
