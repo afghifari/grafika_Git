@@ -129,9 +129,14 @@ void plotSlopNegativeLine (Point P1, Point P2, color C, int W) {
 
 void plotVerticalLine (Point P1, Point P2, color C, int W) {
 	int j;
+	
+	if (P2.y < P1.y) {
+		swapPoint(&P1,&P2);	
+	}
+	
 	for(j = P1.y ; j <= P2.y; j++){
-        // printf("%d %d\n", P1.x , j);
-	printSquare(W, P1.x, j, C);
+		// printf("%d %d\n", P1.x , j);
+		printSquare(W, P1.x, j, C);
 	}
 }
 
@@ -195,4 +200,43 @@ void drawExplosion (Point initialPoint, int n, Point *P, int scaleFactor) {
 	}
 
 	drawPolygon(n, P, C, 2);
+}
+
+void plot8pixel (Point P, int p, int q, int W, color C) {
+    printSquare(W, P.x+p, P.y+q, C);
+    printSquare(W, P.x-p, P.y+q, C);
+    printSquare(W, P.x+p, P.y-q, C);
+    printSquare(W, P.x-p, P.y-q, C);
+
+    printSquare(W, P.x+q, P.y+p, C);
+    printSquare(W, P.x-q, P.y+p, C);
+    printSquare(W, P.x+q, P.y-p, C);
+    printSquare(W, P.x-q, P.y-p, C);
+}
+
+/*
+radius	: jari-jari lingkaran
+P	: titik asal lingkaran
+*/
+void drawCircle (int radius, Point P, int W, color C) {
+    int d, p, q;
+
+    p = 0;
+    q = radius;
+    d = 3 - 2*radius;
+
+    plot8pixel(P, p, q, W, C);
+
+    while (p < q) {
+        p++;
+        if (d<0) {
+            d = d + 4*p + 6;
+        }
+        else {
+            q--;
+            d = d + 4*(p-q) + 10;
+        }
+
+        plot8pixel(P, p, q, W, C);
+    }
 }
