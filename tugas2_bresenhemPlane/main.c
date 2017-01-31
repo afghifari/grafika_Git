@@ -6,6 +6,8 @@
 
 static int endSign = 0;
 
+int left= 500;
+	
 //read keypress
 int getch(void) {
 	struct termios oldattr, newattr;
@@ -51,23 +53,22 @@ color colorBlue() {
 
 /* this function is run by the second thread */
 void *inc_x(void *x_void_ptr) {    
-	// int cmd = ' ';
-	color C;
+	 int cmd = ' ';
+	color C, X;
 	C = colorYellow();
-
-	
-	// sleep(1);
-	
-	while(endSign == 0){
-		
-		shootCannon(C); 
+	 while (1) {
+	 	cmd = getch();
+	 	if (cmd == 10) { //enter
+	 	   //peluru ditembak
+	 	   shootCannon(C); 
+	    }  else
+	    if (cmd == 68) { //left
+			left -= 50;
+		} else
+		if (cmd == 67) {
+			left+= 50;
+		}
 	}
-	// while (1) {
-	// 	cmd = getch();
-	// 	if (cmd == 10) {
-	// 	   //peluru ditembak
-	//    }
-	// }
 	/* the function must return something - NULL will do */
 	return NULL;
 }
@@ -183,8 +184,8 @@ void *inc_x(void *x_void_ptr) {
  	    else
  	    	j += 15;
 
- 	    buildCannon(500, 600, C);
-
+ 	    buildCannon(left, 600, C);
+	
  	    if (counter==1){
  	    	printBackground(X);  
  	    	counter=0;
@@ -206,8 +207,8 @@ void *inc_x(void *x_void_ptr) {
  	    	j -= 10;
  	    else
  	    	j += 15;
- 	    buildCannon(500, 600, C);
-
+ 	    buildCannon(left, 600, C);
+ 	  
 
  	    if (counter==1){
  	    	printBackground(X);  
