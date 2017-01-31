@@ -4,6 +4,8 @@
 #include <pthread.h>
 #include <stdio.h>
 
+static int endSign = 0;
+
 //read keypress
 int getch(void) {
 	struct termios oldattr, newattr;
@@ -17,16 +19,55 @@ int getch(void) {
 	return ch;
 }
 
+color colorBlack() {
+	//black
+	color X;
+	X.R = 0;
+	X.G = 0;
+	X.B = 0;
+	return X;
+}
+
+color colorYellow() {
+	//yellow
+	color C;
+	C.R = 255;
+	C.G = 255;
+	C.B = 10;
+
+	return C;
+}
+
+color colorBlue() {
+	//blue 
+	color B;
+	B.R = 66;
+	B.G = 134;
+	B.B = 244;
+
+	return B;
+}
+
 
 /* this function is run by the second thread */
 void *inc_x(void *x_void_ptr) {    
-	int cmd = ' ';
-	while (1) {
-		cmd = getch();
-		if (cmd == 10) {
-		   //peluru ditembak
-	   }
+	// int cmd = ' ';
+	color C;
+	C = colorYellow();
+
+	
+	// sleep(1);
+	
+	while(endSign == 0){
+		
+		shootCannon(C); 
 	}
+	// while (1) {
+	// 	cmd = getch();
+	// 	if (cmd == 10) {
+	// 	   //peluru ditembak
+	//    }
+	// }
 	/* the function must return something - NULL will do */
 	return NULL;
 }
@@ -73,28 +114,21 @@ void *inc_x(void *x_void_ptr) {
      printf("The framebuffer device was mapped to memory successfully.\n");
 	displayWidth = vinfo.xres;
 	displayHeight = vinfo.yres;
-
+ 
 
 	//black
 	color X;
-	X.R = 0;
-	X.G = 0;
-	X.B = 0;
+	X = colorBlack();	
 
-    //yellow
-    color C;
-    C.R = 255;
-    C.G = 255;
-    C.B = 10;
+	//yellow
+	color C;
+	C = colorYellow();
 
-    //blue 
-    color B;
-    B.R = 66;
-    B.G = 134;
-    B.B = 244;
+	//blue 
+	color B;
+	B = colorBlue();
 
 
-	int W;
 	/*
 	/////////////////////// ADA BUG KALO BIKIN TITIK BEGINI
 	///////////////// START OF BUG ///
@@ -114,26 +148,75 @@ void *inc_x(void *x_void_ptr) {
  	//////////////////////////////// END OF BUG
 */ 
 
+	// buildCannon(500, 600, C);
+	// sleep(1);
+	// shootCannon(C); 
+
+	// P1[3].x = 765;   
+	// P1[3].y = 243;
+    
+ 
+	 //this variable is our reference to the thread 
+	pthread_t inc_x_thread;
+
+	 //create a thread which executes inc_x(&x) 
+	if(pthread_create(&inc_x_thread, NULL, inc_x, &x)) {
+		fprintf(stderr, "Error creating thread\n");
+		return 1;
+	}
+
+	// pesawat terbang disini
+	int counter = 0;
 	j = 240;
 	sign = 0;
-  	for (i = 900 ; i > 20 ; i-=15){
- 	    buildPlane(i, j, C); 
+  	for (i = 1000 ; i > 20 ; i-=10){
+
+  		buildPlaneToLeft(i, j, C); 
+
  	    if (j <= 100)
  	    	sign = 1;
  	    else if (j >= 340)
  	    	sign = 0;
 
  	    if (sign == 0)
- 	    	j -= 20;
+ 	    	j -= 10;
  	    else
- 	    	j += 25;
- 	    printBackground(X);  
-  	}
-	// P1[3].x = 765;   
-	// P1[3].y = 243;
-    
- 
+ 	    	j += 15;
 
+ 	    buildCannon(500, 600, C);
+
+ 	    if (counter==1){
+ 	    	printBackground(X);  
+ 	    	counter=0;
+ 	    }
+ 	    counter++;
+  	}
+
+  	counter=0;
+  	for (i = 20; i < 1250 ; i+=10){
+
+  		buildPlaneToRight(i, j, C); 
+
+ 	    if (j <= 100)
+ 	    	sign = 1;
+ 	    else if (j >= 340)
+ 	    	sign = 0;
+
+ 	    if (sign == 0)
+ 	    	j -= 10;
+ 	    else
+ 	    	j += 15;
+ 	    buildCannon(500, 600, C);
+
+
+ 	    if (counter==1){
+ 	    	printBackground(X);  
+ 	    	counter=0;
+ 	    }
+ 	    counter++;
+  	}
+	
+	endSign = 1;
        
 	//drawBresenhamLine (P1, P2, C, 3);
 	//drawPolyline (2, &P1, C, 1); 
@@ -171,22 +254,8 @@ void *inc_x(void *x_void_ptr) {
 	// printf("Input line weight\n");
 	// //scanf("%d", &W);
 	// W= 1;
-	
-	//  //this variable is our reference to the second thread 
-	// pthread_t inc_x_thread;
+	//drawPolygon(n, P, C, W);
+	munmap(fbp, screensize);
+	close(fbfd);
 
-	//  //create a second thread which executes inc_x(&x) 
-	// if(pthread_create(&inc_x_thread, NULL, inc_x, &x)) {
-	// 	fprintf(stderr, "Error creating thread\n");
-	// 	return 1;
-	// } else {
-	// 	//masuk ke second thread
-		
-	// 	//pesawat terbang disini
-		
-	// 	drawPolygon(n, P, C, W);
-	// 	munmap(fbp, screensize);
-	// 	close(fbfd);
-	// 	return 0;
-	// }
 }

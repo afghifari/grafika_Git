@@ -21,8 +21,6 @@ typedef struct {
     int B;
 } color;
 
-
-
 /*
 edge    : square size
 loc_x   : x coordinate
