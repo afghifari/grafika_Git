@@ -2,7 +2,9 @@
 Tugas Mata Kuliah Grafika
 
 Tugas 1.
-	Buatlah sebuah text yang dapat berjalan.
+	Buatlah sebuah pesawat dari polygon yang dapat berjalan.
+	Lalu pesawat tersebut ditembak oleh sebuah mesin canon.
+	user dapat mengatur kapan canon tersebut akan menembak.
 
 	COMPILE & RUN: 
 	pada terminal yg telah pada posisi direktori program ketikkan :
