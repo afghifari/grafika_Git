@@ -146,17 +146,14 @@ void drawBresenhamLine (Point P1, Point P2, color C, int W) {
 	if (P1.x > P2.x) {
 		swapPoint(&P1,&P2);
 	}
-	// printf("%d %d\n", P1.x, P1.y);
-	// printf("%d %d\n", P2.x, P2.y);
+
 	if ((P2.x >= P1.x && P1.y > P2.y)) {
-		//printf("N Slope\n");
 		plotSlopNegativeLine(P1,P2,C,W);
 	}
 	else if (P1.x == P2.x) {
 		plotVerticalLine(P1,P2,C,W);
 	}
 	else {
-		//printf("P Slope\n");
 		plotSlopPositiveLine(P1,P2,C,W);
 	}
 }
@@ -180,28 +177,21 @@ initialPoint : explosion location in the screen
 scaleFactor : size of the explosion
 *P isi dengan array explosionPoint
 */
-void drawExplosion (Point initialPoint, int n, Point *P, int scaleFactor) {
+void drawExplosion (Point initialPoint) {
 	/*Orange color*/
 	color C;
 	C.R = 218;
 	C.G = 114;
 	C.B = 53;
-
 	int i;
+	for(i=0;i<60;i+=3)
+		drawCircle (i, initialPoint, 5, C);
 
-	if (scaleFactor >1) {
-		for (i = 0; i<n; i++) {
-			P[i].x *= scaleFactor;
-			P[i].y *= scaleFactor;
-		}
-	}
+	initialPoint.x += 30;
+	initialPoint.y += 50;
 
-	for (i = 0; i<n; i++) {
-		P[i].x += initialPoint.x;
-		P[i].y +=initialPoint.y;
-	}
-
-	drawPolygon(n, P, C, 2);
+	for(i=0;i<70;i+=3)
+		drawCircle (i, initialPoint, 5, C);
 }
 
 void plot8pixel (Point P, int p, int q, int W, color C) {
@@ -217,13 +207,8 @@ void plot8pixel (Point P, int p, int q, int W, color C) {
 }
 
 void plot4pixel (Point P, int p, int q, int W, color C) {
-    //printSquare(W, P.x+p, P.y+q, C);
-    //printSquare(W, P.x-p, P.y+q, C);
     printSquare(W, P.x+p, P.y-q, C);
     printSquare(W, P.x-p, P.y-q, C);
-
-    //printSquare(W, P.x+q, P.y+p, C);
-    //printSquare(W, P.x-q, P.y+p, C);
     printSquare(W, P.x+q, P.y-p, C);
     printSquare(W, P.x-q, P.y-p, C);
 }

@@ -211,7 +211,6 @@ void printR(int x, int y, color C) {
                 printSquare(SIZE, j*SIZE+x, i*SIZE+y, C);
         }
     }
-    //printSquare(SIZE, 3*SIZE+x, 1*SIZE+y, C);
 }
 
 void printS(int x, int y, color C) {

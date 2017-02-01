@@ -51,5 +51,17 @@ void shootCannon(int x, int y, color c) {
 		drawBresenhamLine(P1, P2, black, 7);
 		P1.y -= 4;
 		P2.y -= 4;
+		if (direction == 1){
+			if ((P2.x >= indeksIPesawat && P2.x < indeksIPesawat+180) && (P2.y < indeksJPesawat) ) {
+				endSign = 1;
+				drawExplosion(P2);
+			}
+		}else {
+			if ((P2.x <= indeksIPesawat && P2.x > indeksIPesawat-180) && (P2.y < indeksJPesawat) ) {
+				endSign = 1;
+				drawExplosion(P2);
+			}
+		}
+
 	}
 }
