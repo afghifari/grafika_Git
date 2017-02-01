@@ -13,6 +13,7 @@ struct fb_fix_screeninfo finfo;
 long int screensize = 0;
 char *fbp = 0;
 int displayWidth, displayHeight;
+
 static int indeksIPesawat, indeksJPesawat;
 static int endSign;
 static int direction;

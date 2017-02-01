@@ -144,7 +144,7 @@ void plotVerticalLine (Point P1, Point P2, color C, int W) {
 
 void drawBresenhamLine (Point P1, Point P2, color C, int W) {
 	if (P1.x > P2.x) {
-		swapPoint(&P1,&P2);
+		swapPoint(&P1,&P2); 
 	}
 
 	if ((P2.x >= P1.x && P1.y > P2.y)) {

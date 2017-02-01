@@ -13,7 +13,7 @@ void buildHalfCannon(Point P, color C) {
 
 void buildCannon(int x, int y, color c) {
 	cannonX = x;
-	cannonY = y;
+	cannonY = y; 
 	destProjectile = 0;
 	
 	Point P1;

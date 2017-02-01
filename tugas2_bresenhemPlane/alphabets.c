@@ -8,7 +8,7 @@ void printA(int x, int y, color C) {
                 printSquare(SIZE, i*SIZE+x, j*SIZE+y, C);
             }
         }
-    }
+    }c
 
 	printSquare(SIZE, x, 3*SIZE+y, C);
 	printSquare(SIZE, x, 4*SIZE+y, C);

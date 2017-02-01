@@ -5,7 +5,7 @@
 int planeX;
 int planeY;
 
-void buildPlaneToRight(int x, int y, color c){
+void buildPlaneToRight(int x, int y, color c) {
 	//making list of points
 	Point PointList[7];
 

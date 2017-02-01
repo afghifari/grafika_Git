@@ -13,7 +13,7 @@
 static int explode;
 static Point P;
  
-//read keypress 
+//read keypress
 int getch(void) {
 	struct termios oldattr, newattr;
 	int ch;

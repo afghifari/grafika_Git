@@ -12,7 +12,7 @@ void nameSeptialoka (int x, int y, color c) {
 	printO(x+6*distance+20, y, c);
 	printK(x+7*distance+20, y, c);
 	printA(x+8*distance+20, y, c);
-}
+} 
 
 void nameGumi (int x, int y, color c) {
 	printG(x, y, c);
