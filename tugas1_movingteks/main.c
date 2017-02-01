@@ -80,28 +80,6 @@
 
 	 }
 
-// 	printSquare(SIZE, 3*SIZE+23, 7*SIZE+133, B);
-// printA(50,100,C);	
-// printB(100,100,C);
-// printC(150,100,C);
-// printD(200,100,C);
-// printE(250,100,C);  
-// printF(300,100,C);
-// printG(350,100,C);
-// printH(400,100,C);
-// printI(450,100,C);
-// printJ(470,100,C);
-// printK(520,100,C);
-// printL(570,100,C);
-// printM(620,100,C);
-// printN(680,100,C);
-// printO(740,100,C);
-// printP(790,100,C);
-// printR(840,100,B);
-// printS(890,100,B);
-// printT(940,100,B);
-// printV(990,100,B);
-
      munmap(fbp, screensize);
      close(fbfd);
      return 0;
